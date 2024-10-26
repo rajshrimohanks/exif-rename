@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+.tmp
+.env
+.docker-compose.env
+.terraform/
+*.tfvars
+out/
+cmd.sh
+.vscode/*
