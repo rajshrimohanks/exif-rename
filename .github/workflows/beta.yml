@@ -1,4 +1,4 @@
-name: Release assets
+name: Prerelease assets
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build Release Assets
+    name: Build prerelease assets
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

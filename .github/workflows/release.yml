@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build Release Assets
+    name: Build release assets
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
