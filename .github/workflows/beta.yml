@@ -1,9 +1,9 @@
 name: Release assets
 
 on:
-  release:
-    types:
-      - created
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,19 +17,20 @@ jobs:
         with:
           go-version: "1.23"
 
-      - name: Display the release tag
-        run: echo ${{ github.event.release.tag_name }}
+      - name: Display the commit
+        run: echo ${{ github.sha }}
 
       - name: Build
-        run: ./release.sh ${{ github.event.release.tag_name }}
+        run: ./release.sh ${{ github.sha }}
 
       # https://github.com/svenstaro/upload-release-action
       - name: Upload release binaries
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
+          tag: ${{ github.sha }}
           file: ./release/*
           file_glob: true
           overwrite: true
-          make_latest: true
+          prerelease: true
+          body: "This is an untested version. Use at your own risk."
